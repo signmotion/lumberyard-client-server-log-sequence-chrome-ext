@@ -20,9 +20,8 @@ window.onload = function() {
 
     async.series([
             function(callback) {
-                $('#annotation').css("visibility", "visible");
-                $('#htmlLeftTitle').css("visibility", "hidden");
-                $('#htmlRightTitle').css("visibility", "hidden");
+                $('#annotation').show();
+                $('#preloaderContainer').hide();
                 callback();
             },
 
@@ -140,8 +139,6 @@ window.onload = function() {
 
             console.log('Series all done. ' + results);
             $('#preloaderContainer').hide();
-            $('#htmlLeftTitle').css("visibility", "visible");
-            $('#htmlRightTitle').css("visibility", "visible");
         });
 };
 
