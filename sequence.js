@@ -169,7 +169,8 @@ function buildSequence() {
         var text = '<span class="text">' + line.text + '</span>';
         var dt =
             '<span class="datetime">' +
-              new Date(line.datetime).toString() +
+              //$.format.date(new Date(line.datetime), 'yyyy-MM-ddTHH:mm:ss.SSS') +
+              $.format.date(new Date(line.datetime), 'HH:mm:ss.SSS') +
             '</span>';
         var line = '<span class="source">' + sourceSymbol + '</span>' + '&nbsp;' + dt + '&nbsp;' + text;
         dataContainer.append(
@@ -183,16 +184,11 @@ function buildSequence() {
 
 function prepareFileContent(result, fileContent, source) {
 
-    var count = 0;
     var splitted = fileContent.split(ROW_SEPARATOR);
     splitted.forEach(function(line) {
         var o = parseLine(line, source);
         if (o.datetime !== undefined) {
-            if (count < 5) {
-                console.log(o);
-                result.push(o);
-                ++count;
-            }
+          result.push(o);
         }
     });
 }
