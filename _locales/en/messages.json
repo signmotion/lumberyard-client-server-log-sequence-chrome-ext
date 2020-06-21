@@ -1,0 +1,41 @@
+{
+    "extName":
+    {
+        "message": "Lumberyard Client Server Game Log Sequence"
+    },
+
+    "extDescription":
+    {
+        "message": "Compares server and client log files. Integrates them in a single sequence for comfortable debugging of your beloved game."
+    },
+
+    "extNameShort":
+    {
+        "message": "Lumberyard Engine Logs Sequence"
+    },
+
+    "popup_header":
+    {
+        "message": "Select a second logfile"
+    },
+
+    "popup_error":
+    {
+        "message": "Error"
+    },
+
+    "sequence_error_cantAccessToUrl":
+    {
+        "message": "Can't access to a logfile."
+    },
+
+    "sequence_error_cantReadFile":
+    {
+        "message": "Can't read a logfile."
+    },
+
+    "sequence_error_doReload":
+    {
+        "message": "Can't get a charset code."
+    }
+}

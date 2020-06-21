@@ -1,0 +1,41 @@
+{
+    "extName":
+    {
+        "message": "Lumberyard Client Server Game Log Sequence"
+    },
+
+    "extDescription":
+    {
+        "message": "Выстраивает лог-файлы клиента и сервера в единую последовательность для удобной отладки Вашей любимой игры."
+    },
+
+    "extNameShort":
+    {
+        "message": "Lumberyard Engine Logs Sequence"
+    },
+
+    "popup_header":
+    {
+        "message": "Выберите второй лог-файл"
+    },
+
+    "popup_error":
+    {
+        "message": "Ошибка"
+    },
+
+    "sequence_error_cantAccessToUrl":
+    {
+        "message": "Нет доступа к лог-файлу."
+    },
+
+    "sequence_error_cantReadFile":
+    {
+        "message": "Не могу прочитать лог-файл."
+    },
+
+    "sequence_error_doReload":
+    {
+        "message": "Не получена кодовая страница."
+    }
+}
