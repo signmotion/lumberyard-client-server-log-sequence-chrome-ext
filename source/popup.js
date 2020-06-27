@@ -94,7 +94,7 @@ window.onload = function() {
               $("#tabsDiv").hide();
               $("#h2-1").hide();
             }
-            setTimeout('$("#main").show()', 48);
+            setTimeout(() => $("#main").show(), 48);
         });
 };
 
