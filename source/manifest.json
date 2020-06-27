@@ -2,14 +2,12 @@
   "name": "__MSG_extName__",
   "short_name": "__MSG_extNameShort__",
   "description": "__MSG_extDescription__",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "default_locale": "en",
   "manifest_version": 2,
 
   "permissions": [
     "tabs",
-    "http://*/*",
-    "https://*/*",
     "file://*",
     "storage"
   ],
@@ -34,9 +32,9 @@
     "default_popup": "popup.html",
     "default_title": "__MSG_extNameShort__"
   },
-  
+
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*", "file://*/*.log"],
+    "matches": ["file://*/*.log"],
     "js": ["content.js"]
   }],
 
