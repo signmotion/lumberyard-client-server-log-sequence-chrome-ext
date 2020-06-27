@@ -2,13 +2,15 @@
   "name": "__MSG_extName__",
   "short_name": "__MSG_extNameShort__",
   "description": "__MSG_extDescription__",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "default_locale": "en",
   "manifest_version": 2,
 
   "permissions": [
     "tabs",
-    "file://*"
+    "file://*",
+    "http://*/*",
+    "https://*/*"
   ],
 
   "icons": {
@@ -33,7 +35,7 @@
   },
 
   "content_scripts": [{
-    "matches": ["file://*/*.log"],
+    "matches": ["http://*/*.log", "https://*/*.log", "file://*/*.log"],
     "css": ["sequence.css"],
     "js": ["sequence.js"]
   }],
