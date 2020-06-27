@@ -1,9 +1,9 @@
 var currentCharCode;
 
-var firstUrl;
+var firstTab;
 var firstFileContent;
 
-var secondUrl;
+var secondTab;
 var secondFileContent;
 
 var tabList = [];
@@ -24,32 +24,17 @@ window.onload = function() {
             },
 
             function(callback) {
-                firstUrl = thisTab.url;
-                console.log("firstUrl " + firstUrl);
+                // active tab includes
                 chrome.tabs.query({}, function(tabs) {
                     for (var i = 0; i < tabs.length; i++) {
                         var tab = tabs[i];
-                        if (!tab.active && tab.url.indexOf(".log") !== -1) {
+                        if (tab.url.indexOf(".log") !== -1) {
                             tabList.push(tab);
                         }
                     }
                     console.log(tabList);
                     callback();
                 });
-            },
-
-            function(callback) {
-                for (var i = 0; i < tabList.length; i++) {
-                    var tab = tabList[i];
-                    var tabDiv = '<div class="tabDiv">';
-                    tabDiv += '<div class="tabTitleDiv">';
-                    tabDiv += '<div class="tabImgDiv"><img src="' + tab.favIconUrl + '"></div>';
-                    tabDiv += tab.title + '</div>';
-                    tabDiv += '<div class="tabUrlDiv">' + tab.url + '</div>';
-                    tabDiv += '<div class="clear"></div></div>';
-                    $("#tabsDiv").append(tabDiv);
-                }
-                callback();
             },
 
             function(callback) {
@@ -68,10 +53,33 @@ window.onload = function() {
                             callback();
                         }
                     });
+            },
+
+            function(callback) {
+                console.log('will open immediately a merged log then have 2 logfiles');
+                $("#messageNote").html(
+                    chrome.i18n.getMessage("popup_message_need_open_2_tabs"));
+                // will open immediately a merged log then have 2 logfiles
+                if (tabList.length === 2) {
+                    // open immediately
+                    firstTab = tabList[0];
+                    secondTab = tabList[1];
+                    console.log('tabs');
+                    console.log(firstTab);
+                    console.log(secondTab);
+                    sequenceShow();
+                }
+                else {
+                    // show help message
+                    $("#messageNote").html(
+                      chrome.i18n.getMessage("popup_message_need_open_2_tabs"));
+                }
+                callback();
             }
         ],
 
         function(err, results) {
+            console.log('err' + err);
             if (err) {
               var msg = chrome.i18n.getMessage("popup_error");
               if (err === "unsupportedReload") {
@@ -82,6 +90,7 @@ window.onload = function() {
                     msg + '<br>' + results +
                   '</div>');
               $("#errorDiv").show();
+              $("#messageNote").hide();
               $("#tabsDiv").hide();
               $("#h2-1").hide();
             }
@@ -90,38 +99,15 @@ window.onload = function() {
 };
 
 
-function openSite() {
-
-    async.series([
-            function(callback) {
-                chrome.tabs.create({
-                    index: thisTab.index + 1,
-                    url: secondUrl
-                });
-                callback();
-            }
-        ],
-
-        function(err, results) {
-            if (err) {
-                throw err;
-            }
-
-            console.log('Series all done. ' + results);
-            $("body").html("Loaded");
-        });
-}
-
-
-function sequenceShow(o) {
+function sequenceShow() {
 
     console.log('sequenceShow()');
     async.series([
             function(callback) {
                 var sequenceData = {
                     currentTab: thisTab,
-                    firstUrl: firstUrl,
-                    secondUrl: o.otherUrl,
+                    firstUrl: firstTab.url,
+                    secondUrl: secondTab.url,
                     currentCharCode: currentCharCode
                 };
                 chrome.runtime.sendMessage({
@@ -131,7 +117,7 @@ function sequenceShow(o) {
                     if (response) {
                         callback();
                     } else {
-                        callback("Error when chrome.runtime.sendMessage().");
+                        callback("Error when sendMessage().");
                     }
                 });
             },
@@ -152,12 +138,3 @@ function sequenceShow(o) {
             }
         });
 }
-
-
-$(document).on("click", ".tabDiv", function() {
-
-    console.log($(this).find('.tabUrlDiv').text());
-    sequenceShow({
-        otherUrl: $(this).find('.tabUrlDiv').text()
-    });
-});

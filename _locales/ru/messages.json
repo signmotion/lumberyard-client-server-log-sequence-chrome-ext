@@ -16,12 +16,17 @@
 
     "popup_header":
     {
-        "message": "Выберите второй лог-файл"
+        "message": "Выберите два лог-файла из одной сессии"
     },
 
     "popup_error":
     {
         "message": "Ошибка"
+    },
+
+    "popup_message_need_open_2_tabs":
+    {
+        "message": "Откройте в двух вкладках браузера 1 серверный и 1 клиентский лог-файлы, чтобы собрать из них 1 общий."
     },
 
     "sequence_error_cantAccessToUrl":

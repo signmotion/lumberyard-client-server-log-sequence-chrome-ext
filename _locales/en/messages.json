@@ -16,12 +16,17 @@
 
     "popup_header":
     {
-        "message": "Select a second logfile"
+        "message": "Select the 2 logfiles from one session"
     },
 
     "popup_error":
     {
         "message": "Error"
+    },
+
+    "popup_message_need_open_2_tabs":
+    {
+        "message": "Open the 1 server and 1 client logfiles in two tabs of your browser to get 1 nice log file."
     },
 
     "sequence_error_cantAccessToUrl":

@@ -13,13 +13,13 @@ body {
 }
 
 h2 {
-    text-align: left;
-    border-bottom: 1px dotted #D14042;
-    font-size: 14px;
-    padding-left: 5px;
-    font-weight: normal;
-    height: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px dotted #00AA00;
+    font-size: 16px;
+    padding: 12px 5px 12px 5px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 14px;
 }
 
 
