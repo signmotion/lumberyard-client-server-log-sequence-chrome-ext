@@ -1,5 +1,3 @@
-var currentCharCode;
-
 var firstTab;
 var firstFileContent;
 
@@ -35,24 +33,6 @@ window.onload = function() {
                     console.log(tabList);
                     callback();
                 });
-            },
-
-            function(callback) {
-                chrome.tabs.sendMessage(
-                    thisTab.id,
-                    {
-                        name: "getCharCode",
-                    },
-                    function(response) {
-                        console.log(response);
-                        if (response === undefined) {
-                            // ignore this error: work with plain text (log) files
-                            callback();
-                        } else {
-                            currentCharCode = response.charCode;
-                            callback();
-                        }
-                    });
             },
 
             function(callback) {
@@ -107,8 +87,7 @@ function sequenceShow() {
                 var sequenceData = {
                     currentTab: thisTab,
                     firstUrl: firstTab.url,
-                    secondUrl: secondTab.url,
-                    currentCharCode: currentCharCode
+                    secondUrl: secondTab.url
                 };
                 sendMessage({
                     name: "setSequenceData",

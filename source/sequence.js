@@ -10,8 +10,6 @@ var secondFileContent;
 var successGetSecondFile = false;
 var secondSource;
 
-var charCode;
-
 var ROW_SEPARATOR = '\n';
 var DATETIME_SEPARATOR = '> ';
 
@@ -37,14 +35,6 @@ window.onload = function() {
                     sequenceData = response.sequenceData;
                     callback();
                 });
-            },
-
-            function(callback) {
-                charCode = "text/plain;";
-                if (sequenceData.currentCharCode !== undefined) {
-                    charset += " " + sequenceData.currentCharCode;
-                }
-                callback();
             },
 
             function(callback) {
