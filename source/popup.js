@@ -110,7 +110,7 @@ function sequenceShow() {
                     secondUrl: secondTab.url,
                     currentCharCode: currentCharCode
                 };
-                chrome.runtime.sendMessage({
+                sendMessage({
                     name: "setSequenceData",
                     sequenceData: sequenceData
                 }, function(response) {

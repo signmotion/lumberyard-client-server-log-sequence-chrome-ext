@@ -30,7 +30,7 @@ window.onload = function() {
             },
 
             function(callback) {
-                chrome.runtime.sendMessage({
+                sendMessage({
                     name: "getSequenceData"
                 }, function(response) {
                     console.log(response);
