@@ -21,7 +21,7 @@ window.onload = function() {
     async.series([
             function(callback) {
                 $('#annotation').show();
-                $('#preloaderContainer').hide();
+                $('#preloaderContainer').show();
                 callback();
             },
 
@@ -106,8 +106,7 @@ window.onload = function() {
                 }
                 $("#container").css("width", width);
                 $("#container").css("margin", '5px auto');
-                $("#htmlLeftTitle").css("width", width / 2);
-                $("#htmlLeftTitleUrl").css("width", width / 2 - 10);
+                $('#preloaderContainer').hide();
 
                 var height = $(window).height() * 0.75;
                 if (height < 600) {
@@ -212,7 +211,7 @@ function parseLine(line, source) {
 
 
 // source: 2020-06-19T10:46:21:770+03
-// needed: 2020-06-19T10:46:21.770Z
+// needed: 2020-06-19T13:46:21.770Z
 function parseDateTime(s) {
 
     var pos = s.length - 3;
