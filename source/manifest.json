@@ -2,7 +2,7 @@
   "name": "__MSG_extName__",
   "short_name": "__MSG_extNameShort__",
   "description": "__MSG_extDescription__",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "default_locale": "en",
   "manifest_version": 2,
 
